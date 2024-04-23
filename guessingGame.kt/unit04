@@ -1,0 +1,25 @@
+import kotlin.random.Random
+
+fun main () {
+    val randomNumber = Random.nextInt(1, 101)
+    var userGuess: Int
+    var attempts = 0
+    
+    println("Welcome to the Guess the Number Game!")
+    println("Try to guess the random number between 1 and 100.")
+    
+    do {
+        println("enter your guess: ")
+        userGuess = readLine()!!.toInt()
+        
+        when {
+            userGuess < randomNumber -> println ("Too low, try again.")
+            userGuess > randomNumber -> println ("Too high, try again.")
+            else -> println("Congratulations! You guessed the correct number: $randomNumber")
+        }
+        
+        attempts++
+    } while (userGuess != randomNumber)
+    
+    println("It took you $attempts to guess the correct number.")
+}

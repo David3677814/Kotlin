@@ -1,0 +1,30 @@
+fun main() {
+    println("Welcome to the movie rating checker!")
+    println("Please enter the movie rating (G, PG, PG-13, R, or NC-17): ")
+    val movieRating = readLine()
+
+    println("Please enter your age: ")
+    val age = readLine()?.toIntOrNull()
+
+    if (movieRating != null && age != null) {
+        val canWatch = canWatchMovie(movieRating, age)
+        if (canWatch) {
+            println("You are allowed to see the movie in the theater.")
+        } else {
+            println("Sorry, you are not allowed to see the movie in the theater.")
+        }
+    } else {
+        println("Invalid input. Please enter valid movie rating and age.")
+    }
+}
+
+fun canWatchMovie(movieRating: String, age: Int): Boolean {
+    return when (movieRating.toUpperCase()) {
+        "G" -> true
+        "PG" -> true
+        "PG-13" -> age >= 13
+        "R" -> age >= 17
+        "NC-17" -> age >= 17
+        else -> false
+    }
+}
